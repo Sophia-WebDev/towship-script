@@ -9,7 +9,7 @@
 --#-----------------------------------------#
 
 local scriptVersion = "1.2.1"
-local scriptAuthor = "Soph Is"
+local scriptAuthor = "Ygor Is"
 
 local atvScript = 1
 local ativacao = 1
@@ -29,8 +29,6 @@ function statusdb()
         database = require "data"
     end
 end
-
-
 
 function testFunc(t)
     if t == true then
@@ -111,6 +109,21 @@ function fotoFlags()
     end
 end
 
+function stickerFlags()
+    stickerResult = {}
+    stickerChoice = {}
+    numero = 1
+    for start = 1, tablelength(db), 1 do
+        if db[start].type == "sticker" then
+            stickerResult[numero] = db[start]
+            stickerChoice[numero] = db[start].name
+            numero = numero + 1
+        end
+        if db[start].type == "sair" then
+            stickerChoice[numero] = db[start].name
+        end
+    end
+end
 -- decoracaoResult = {}
 
 -- for numeror=1, tablelength(decoResult), 1 do
@@ -135,6 +148,7 @@ function mainMenu()
             "➲ Itens",
             "➲ Decorações",
             "➲ Fotos",
+            "➲ Stickers",
             "➲ Sair"
         },
         nil
@@ -170,6 +184,11 @@ function mainMenu()
         baseConfigRewards()
     end
     if mainM == 8 then
+        stickerFlags()
+        menuBase = 5
+        baseConfigRewards()
+    end
+    if mainM == 9 then
         exitScript()
     end
     if mainM == nil then
@@ -912,6 +931,9 @@ function RewardSearch(Search)
     if menuBase == 4 then
         fotoMenu()
     end
+   if menuBase == 5 then
+        stickerM()
+    end
   end
     -- if result[1].value != 4800 then gg.toast("Resultado Inválido!!")
 end
@@ -971,6 +993,8 @@ function valorFlag(valor01, valor02, valor03, valor04, valor05, valor06, valor08
     valor_07[1].flags = gg.TYPE_DWORD
     valor_07[1].value = 0
     valor_07[1].freeze = true
+    valor_07[1].freezeType = gg.FREEZE_NORMAL
+    gg.addListItems(valor_07)
     gg.setValues(valor_07)
 
     local valor_08 = {}
@@ -979,8 +1003,6 @@ function valorFlag(valor01, valor02, valor03, valor04, valor05, valor06, valor08
     valor_08[1].flags = gg.TYPE_DWORD
     valor_08[1].value = 0
     valor_08[1].freeze = true
-    valor_07[1].freezeType = gg.FREEZE_NORMAL
-    gg.addListItems(valor_07)
     gg.setValues(valor_08)
 
     local valor_09 = {}
@@ -1079,6 +1101,28 @@ function fotoMenu()
                 fotoResult[menuFoto].value6,
                 fotoResult[menuFoto].value7,
                 fotoResult[menuFoto].flagsOn
+            )
+            reflashFlags(SearchTag)
+        end
+    end
+end
+
+function stickerM()
+    local Msticker = gg.choice(stickerChoice, nil, "ϟSelecione uma decoração!ϟ")
+    if Msticker == nil then
+    else
+        if Msticker == tablelength(stickerChoice) then
+            reflashFlags(SearchTag)
+        else
+            valorFlag(
+                stickerResult[Msticker].value1,
+                stickerResult[Msticker].value2,
+                stickerResult[Msticker].value3,
+                stickerResult[Msticker].value4,
+                stickerResult[Msticker].value5,
+                stickerResult[Msticker].value6,
+                stickerResult[Msticker].value7,
+                stickerResult[Msticker].flagsOn
             )
             reflashFlags(SearchTag)
         end
