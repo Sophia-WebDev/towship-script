@@ -17,33 +17,55 @@ local ativacao = 1
 local on = "[ Online ]"
 local off = "[ Local ]"
 
-test = "[ Inativa ]"
-database = require "data"
-function statusdb()
-    if test == on then
-        ResponseContent =
-            gg.makeRequest("https://raw.githubusercontent.com/Ygor-Is/script-towship/main/TowshipDB.lua").content
-        pcall(load(ResponseContent))
-    end
-    if test == off then
-        database = require "data"
-    end
-end
+databaseType = "[ Inativa ]"
 
-function testFunc(t)
-    if t == true then
-        gg.alert("Database Online ativa!")
-    else
-        gg.alert("Database local ativa!")
-    end
-end
-function tablelength(T)
+function tablelength(tabl)
     local count = 0
-    for _ in pairs(T) do
+    for _ in pairs(tabl) do
         count = count + 1
     end
     return count
 end
+
+-- function databaseOpc(opc)
+    -- if opc == "online" then
+        -- ResponseContent =
+            -- gg.makeRequest("https://raw.githubusercontent.com/Ygor-Is/script-towship/main/TowshipDB.lua").content
+        -- pcall(load(ResponseContent))
+        -- databaseType = "Online"
+    -- end
+    -- if opc == "offline" then
+        -- database = require "data"
+        -- databaseType = "Offline"
+    -- end
+    -- if opc == "ambas" then
+        -- dba = {}
+        -- ResponseContent = gg.makeRequest("https://raw.githubusercontent.com/Sophia-WebDev/towship-script/main/data.lua").content pcall(load(ResponseContent))
+        -- dbb = require'data'
+
+        -- dba = dblocal
+        -- dba.dblocal = db..dblocal
+       
+        -- -- ResponseContent = gg.makeRequest("https://raw.githubusercontent.com/Sophia-WebDev/towship-script/main/data.lua").content pcall(load(ResponseContent))
+        -- -- for start = 1, tablelength(db), 1 do
+          -- -- database = db
+          -- -- endonlidb = start
+        -- -- end
+
+        -- -- dba = require'data'
+        -- -- data = dboff + db
+        -- -- for start = endonlidb, tablelength(db), 1 do
+          -- -- database[start] = db[start]
+        -- -- end
+    -- end
+-- end
+
+-- databaseOpc("ambas")
+
+-- print(dba)
+
+data = require'data'
+
 
 function skinsFlags()
     skinsResult = {}
