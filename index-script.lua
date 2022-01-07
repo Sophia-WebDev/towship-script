@@ -9,7 +9,7 @@
 --#-----------------------------------------#
 
 local scriptVersion = "1.2.1"
-local scriptAuthor = "Ygor Is"
+local scriptAuthor = "Soph Is"
 
 local atvScript = 1
 local ativacao = 1
