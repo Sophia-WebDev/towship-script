@@ -979,6 +979,8 @@ function valorFlag(valor01, valor02, valor03, valor04, valor05, valor06, valor08
     valor_08[1].flags = gg.TYPE_DWORD
     valor_08[1].value = 0
     valor_08[1].freeze = true
+    valor_07[1].freezeType = gg.FREEZE_NORMAL
+    gg.addListItems(valor_07)
     gg.setValues(valor_08)
 
     local valor_09 = {}
