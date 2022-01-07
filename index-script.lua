@@ -11,11 +11,14 @@
 local scriptVersion = "1.2.1"
 local scriptAuthor = "Ygor Is"
 
+
 local atvScript = 1
 local ativacao = 1
 
 local on = "[ Online ]"
 local off = "[ Local ]"
+
+resetValue = 0
 
 databaseType = "[ Inativa ]"
 
@@ -916,10 +919,12 @@ end
 function defineFlags(opem, SearchT)
     local flagsOn = 0
     if opem == 1 then
-        if SearchTag == 1 then
-            valorFlag("1935762184", "104", "0", "0", "0", "0", "50", flagsOn)
+        if SearchTag == 1 then 
+            resetValue = 1
+            valorFlag("1935762184", "104", "0", "0", "0", "0", "50", flagsOn,"1")
         else
-            valorFlag("1635148044", "3355698", "0", "0", "0", "0", "1", flagsOn)
+            resetValue = 1
+            valorFlag("1635148044", "3355698", "0", "0", "0", "0", "1", flagsOn,"1")
         end
     else
         if SearchT == 1 then
@@ -960,7 +965,9 @@ function RewardSearch(Search)
     -- if result[1].value != 4800 then gg.toast("Resultado Inválido!!")
 end
 
-function valorFlag(valor01, valor02, valor03, valor04, valor05, valor06, valor08, flagsOn)
+
+function valorFlag(valor01, valor02, valor03, valor04, valor05, valor06, valor08, flagsOn,valor09)
+
     local valor_01 = {}
     valor_01[1] = {}
     valor_01[1].address = result[1].address + 0x4
@@ -1008,7 +1015,10 @@ function valorFlag(valor01, valor02, valor03, valor04, valor05, valor06, valor08
     valor_06[1].value = valor06
     valor_06[1].freeze = false
     gg.setValues(valor_06)
-
+    
+    print(valor09)
+    
+    if valor09 == nil then
     local valor_07 = {}
     valor_07[1] = {}
     valor_07[1].address = result[1].address - 0xc
@@ -1018,7 +1028,18 @@ function valorFlag(valor01, valor02, valor03, valor04, valor05, valor06, valor08
     valor_07[1].freezeType = gg.FREEZE_NORMAL
     gg.addListItems(valor_07)
     gg.setValues(valor_07)
-
+    else
+    local valor_07 = {}
+    valor_07[1] = {}
+    valor_07[1].address = result[1].address - 0xc
+    valor_07[1].flags = gg.TYPE_DWORD
+    valor_07[1].value = 1
+    valor_07[1].freeze = true
+    valor_07[1].freezeType = gg.FREEZE_NORMAL
+    gg.addListItems(valor_07)
+    gg.setValues(valor_07)
+    end
+    
     local valor_08 = {}
     valor_08[1] = {}
     valor_08[1].address = result[1].address + 0x1C
