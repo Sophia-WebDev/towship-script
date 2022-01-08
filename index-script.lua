@@ -943,7 +943,7 @@ function defineFlags(opem, SearchT)
         end
     else
         if SearchT == 1 then
-            RewardSearch("1;4200;1935762184;104;0;0;0;0::37")
+            RewardSearch("1;4800;1935762184;104;0;0;0;0::37")
             SearchTag = 1
         end
         if SearchT == 2 then
