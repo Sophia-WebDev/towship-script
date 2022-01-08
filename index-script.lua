@@ -914,9 +914,6 @@ function baseConfigRewards()
     if baseMenu == 03 then
         mainMenu()
     end
-    if baseMenu == 04 then
-        stickerM()
-    end
 end
 
 function defineFlags(opem, SearchT)
@@ -1296,6 +1293,9 @@ function reflashFlags(SearchTag)
         end
         if menuBase == 4 then
             fotoMenu()
+        end
+        if menuBase == 5 then
+            stickerM()
         end
         ativacao = 2
     end
