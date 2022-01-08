@@ -374,7 +374,7 @@ function bdvipR()
             bdvipRMs("1;4545;1701996056;1651327333;1850307169::25")
         end
         if bdvipRM[35] == true then
-            bdvipRMs("1;4200;1935762184;104;0::25")
+            bdvipRMs("1;4800;1935762184;104;0::25")
         end
         if bdvipRM[36] == true then
             mainMenu()
@@ -531,7 +531,7 @@ function bdlowR()
             bdComunRMs("1;1935762184;104;0::25")
         end
         if bdvipRM[35] == true then
-            bdComunRMs("1;4200;1635148044;3486770;0;0;0;0::37")
+            bdComunRMs("1;4800;1635148044;3355698;0::25")
         end
         if bdvipRM[36] == true then
             mainMenu()
