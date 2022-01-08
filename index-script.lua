@@ -8,6 +8,8 @@
 
 --#-----------------------------------------#
 
+MemoriRegion = gg.REGION_C_ALLOC
+
 local scriptVersion = "1.2.1"
 local scriptAuthor = "Ygor Is"
 
@@ -529,7 +531,7 @@ function bdlowR()
             bdComunRMs("1;1935762184;104;0::25")
         end
         if bdvipRM[35] == true then
-            bdComunRMs("1;4800;1635148044;3355698;0::25")
+            bdComunRMs("1;4200;1635148044;3486770;0;0;0;0::37")
         end
         if bdvipRM[36] == true then
             mainMenu()
@@ -852,10 +854,23 @@ end
 function bilheteVip()
     gg.clearResults()
     gg.setRanges(MemoriRegion)
-    gg.searchNumber("0;1768641320::5", gg.TYPE_DWORD)
-    gg.refineNumber("0", gg.TYPE_DWORD)
-    gg.getResults(gg.getResultsCount())
-    gg.editAll("1", gg.TYPE_DWORD)
+    gg.searchNumber("1768641318;1765891950;1634496626;1935631726;1701011824;0;1768641316;1765891950;1919905906;1886609268;6644577;0::133", gg.TYPE_DWORD)
+    gg.refineNumber("1768641318")
+    result = gg.getResults(gg.getResultsCount())
+    for start=1, gg.getResultsCount(),1 do
+    if start == 1 then 
+    value__ = 0 
+    else
+    value__ = 1
+    end
+    local _valor_ = {}
+    _valor_[1] = {}
+    _valor_[1].address = result[start].address - 0x4
+    _valor_[1].flags = gg.TYPE_DWORD
+    _valor_[1].value = value__
+    _valor_[1].freeze = false
+    gg.setValues(_valor_)
+    end
     gg.alert("Bilhete Vip Ativo!")
     gg.clearResults()
 end
@@ -924,15 +939,15 @@ function defineFlags(opem, SearchT)
             valorFlag("1935762184", "104", "0", "0", "0", "0", "50", flagsOn,"1")
         else
             resetValue = 1
-            valorFlag("1635148044", "3355698", "0", "0", "0", "0", "1", flagsOn,"1")
+            valorFlag("1635148044", "3486770", "0", "0", "0", "0", "1", flagsOn,"1")
         end
     else
         if SearchT == 1 then
-            RewardSearch("1;4800;1935762184;104;0;0;0;0::37")
+            RewardSearch("1;4200;1935762184;104;0;0;0;0::37")
             SearchTag = 1
         end
         if SearchT == 2 then
-            RewardSearch("1;4800;1635148044;3355698;0;0;0;0::37")
+            RewardSearch("1;4200;1635148044;3486770;0;0;0;0::37")
             SearchTag = 2
         end
     end
@@ -941,7 +956,7 @@ end
 function RewardSearch(Search)
     gg.clearResults()
     gg.searchNumber(Search, gg.TYPE_DWORD)
-    gg.refineNumber("4800")
+    gg.refineNumber("4200")
     result = gg.getResults(gg.getResultsCount())
     if gg.getResultsCount() == 0 then
     gg.alert("Colete; a Foto ou as notas antes de fazer o processo.")
