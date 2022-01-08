@@ -914,7 +914,7 @@ function baseConfigRewards()
     if baseMenu == 03 then
         mainMenu()
     end
-    if baseMenu == 03 then
+    if baseMenu == 04 then
         stickerM()
     end
 end
