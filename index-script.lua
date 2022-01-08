@@ -914,6 +914,9 @@ function baseConfigRewards()
     if baseMenu == 03 then
         mainMenu()
     end
+    if baseMenu == 03 then
+        stickerM()
+    end
 end
 
 function defineFlags(opem, SearchT)
