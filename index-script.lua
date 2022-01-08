@@ -374,7 +374,7 @@ function bdvipR()
             bdvipRMs("1;4545;1701996056;1651327333;1850307169::25")
         end
         if bdvipRM[35] == true then
-            bdvipRMs("1;4800;1935762184;104;0::25")
+            bdvipRMs("1;4200;1935762184;104;0::25")
         end
         if bdvipRM[36] == true then
             mainMenu()
